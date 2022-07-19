@@ -2,13 +2,6 @@
 My personal dotfiles
 
 ```
-curl -Lks https://2.ly/akJgj | /bin/bash -
-# or
-curl -Lks https://is.gd/XSH1fm | /bin/bash -
+curl -Lks https://gist.githubusercontent.com/hardest1/634b316a31a66ab5bfd82cbdce53ad97/raw/efc0a3fb1d8b82d43d4c743010f9525d72beb769/install-dotfiles.sh | /bin/bash -
 ```
-
-Shortlink for installer:
-https://2.ly/akJgj - Stats:	https://2.ly/akJgj~s
-
-Backup: https://is.gd/XSH1fm
 
