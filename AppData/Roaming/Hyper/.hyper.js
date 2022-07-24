@@ -70,9 +70,7 @@ module.exports = {
         // 'window:devtools': 'cmd+alt+o',
     },
     // plugins - format: [@org/]project[#version]
-    plugins: [
-        "hyper-opacity"
-    ],
+    plugins: ["hyper-opacity", "gitrocket"],
     // local/dev plugins
     localPlugins: [],
 };
