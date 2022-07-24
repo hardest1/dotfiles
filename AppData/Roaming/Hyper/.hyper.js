@@ -62,7 +62,7 @@ module.exports = {
         // hyper-opacity plugin
         opacity: {
             focus: 0.99,
-            blur: 0.9
+            blur: 0.95
         }
     },
     // key mappings
@@ -70,7 +70,9 @@ module.exports = {
         // 'window:devtools': 'cmd+alt+o',
     },
     // plugins - format: [@org/]project[#version]
-    plugins: ["hyper-opacity", "gitrocket"],
+    plugins: [
+        "hyper-opacity"
+    ],
     // local/dev plugins
     localPlugins: [],
 };
