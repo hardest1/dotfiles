@@ -63,7 +63,29 @@ module.exports = {
         opacity: {
             focus: 0.99,
             blur: 0.95
-        }
+        },
+
+        shells: [
+            {
+                default: true,
+                name: "Git Bash",
+                shell: "C:\\Program Files\\Git\\bin\\bash.exe",
+                args: ["--login"],
+            },
+            {
+                name: "WSL",
+                shell: "C:\\Windows\\System32\\wsl.exe",
+            },
+            {
+                name: "CMD",
+                shell: "cmd.exe",
+            },
+            {
+                name: "Powershell",
+                shell: "powershell.exe",
+            },
+        ],
+      
     },
     // key mappings
     keymaps: {
@@ -71,7 +93,8 @@ module.exports = {
     },
     // plugins - format: [@org/]project[#version]
     plugins: [
-        "hyper-opacity"
+        "hyper-opacity",
+        "hyper-launch-menu"
     ],
     // local/dev plugins
     localPlugins: [],
