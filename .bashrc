@@ -84,6 +84,9 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# Create symlink for hyperjs config on non-windows systems
+[ "$OSTYPE" != msys ] && [ ! -f ".hyper.js" ] && ln -s AppData/Roaming/Hyper/.hyper.js .hyper.js;
+
 if [ "$color_prompt" = yes ]; then
     # Only overwrite prompt with new one if we are not on msys (Windows / Git Bash) because we already have a fancy prompt there
     if [ "$OSTYPE" != msys ]; then
