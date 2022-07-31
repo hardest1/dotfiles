@@ -93,12 +93,8 @@ if [ -n "$SSH_CLIENT" ]; then
   is_remote="SSH "
 fi
 
-# Stuff to do on non-windows systems (symlink hyper, set fancy prompt)
+# Stuff to do on non-windows systems (set fancy prompt)
 if [ "$OSTYPE" != msys ]; then
-
-  # Create symlink for hyperjs config on non-windows systems
-  [ "$OSTYPE" != msys ] && [ ! -f "$HOME/.hyper.js" ] && ln -s "$HOME/AppData/Roaming/Hyper/.hyper.js" "$HOME/.hyper.js";
-    
   # Overwrite prompt if we are not on Windows / Git Bash because we already have a fancy prompt there
   if [ "$color_prompt" = yes ]; then
       PS1="${debian_chroot:+($debian_chroot)}"
@@ -113,6 +109,11 @@ if [ "$OSTYPE" != msys ]; then
       PS1="${debian_chroot:+($debian_chroot)}"
       PS1='\u@\h$is_remote\w \$ '
   fi
+else
+  # Create symlink for ngrok config on windows
+  [ ! -f "$HOME/AppData/Local/ngrok/ngrok.yml" ] && ln -s "$HOME/.config/ngrok/ngrok.yml" "$HOME/AppData/Local/ngrok/ngrok.yml";
+  # Create symlink for hyperjs config on windows
+  [ ! -f "$HOME/AppData/Roaming/Hyper/.hyper.js" ] && ln -s "$HOME/.hyper.js" "$HOME/AppData/Roaming/Hyper/.hyper.js";
 fi
 unset color_prompt force_color_prompt
 
