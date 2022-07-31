@@ -90,7 +90,7 @@ fi
 # Check if we are connected via SSH which means we are on a remote machine
 is_remote=
 if [ -n "$SSH_CLIENT" ]; then
-  is_remote="SSH"
+  is_remote="SSH "
 fi
 
 # Stuff to do on non-windows systems (symlink hyper, set fancy prompt)
@@ -102,7 +102,7 @@ if [ "$OSTYPE" != msys ]; then
   # Overwrite prompt if we are not on Windows / Git Bash because we already have a fancy prompt there
   if [ "$color_prompt" = yes ]; then
       PS1="${debian_chroot:+($debian_chroot)}"
-      PS1="$PS1\[\033[01;32m\]$is_remote "
+      PS1="$PS1\[\033[01;32m\]$is_remote"
       PS1="$PS1\[\033[01;31m\]\u"
       PS1="$PS1\[\033[01;33m\]@"
       PS1="$PS1\[\033[01;36m\]\h "
@@ -111,7 +111,7 @@ if [ "$OSTYPE" != msys ]; then
       PS1="$PS1\[\033[00m\]"
   else
       PS1="${debian_chroot:+($debian_chroot)}"
-      PS1='\u@\h$is_remote \w \$ '
+      PS1='\u@\h$is_remote\w \$ '
   fi
 fi
 unset color_prompt force_color_prompt
