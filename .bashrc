@@ -109,10 +109,10 @@ if [ "$OSTYPE" != msys ]; then
       PS1="${debian_chroot:+($debian_chroot)}"
       PS1='\u@\h$is_remote\w \$ '
   fi
+# Stuff to do on windows / git bash
 else
-  # Create symlink for ngrok config on windows
+  # Create symlinks for ngrok and hyperjs config
   [ ! -f "$HOME/AppData/Local/ngrok/ngrok.yml" ] && ln -s "$HOME/.config/ngrok/ngrok.yml" "$HOME/AppData/Local/ngrok/ngrok.yml";
-  # Create symlink for hyperjs config on windows
   [ ! -f "$HOME/AppData/Roaming/Hyper/.hyper.js" ] && ln -s "$HOME/.hyper.js" "$HOME/AppData/Roaming/Hyper/.hyper.js";
 fi
 unset color_prompt force_color_prompt
