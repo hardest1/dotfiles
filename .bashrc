@@ -4,6 +4,9 @@ trap 'echo -ne "\033]2;$(history 1 | sed "s/^[0-9 ]* \+//")\007"' DEBUG
 # alias for dotfiles bare repo
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
+# add .bin folder to path
+export PATH="$HOME/.bin:$PATH"
+
 # Start SSH Agent
 #----------------------------
 
