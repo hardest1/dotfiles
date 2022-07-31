@@ -111,8 +111,12 @@ if [ "$OSTYPE" != msys ]; then
   fi
 # Stuff to do on windows / git bash
 else
-  # Create symlinks for ngrok and hyperjs config
+  # Create symlinks and directories
+  # for ngrok
+  [ ! -d "$HOME/AppData/Local/ngrok" ] && mkdir -p "$HOME/AppData/Local/ngrok";
   [ ! -f "$HOME/AppData/Local/ngrok/ngrok.yml" ] && ln -s "$HOME/.config/ngrok/ngrok.yml" "$HOME/AppData/Local/ngrok/ngrok.yml";
+  # for hyper terminal
+  [ ! -d "$HOME/AppData/Roaming/Hyper" ] && mkdir -p "$HOME/AppData/Roaming/Hyper";
   [ ! -f "$HOME/AppData/Roaming/Hyper/.hyper.js" ] && ln -s "$HOME/.hyper.js" "$HOME/AppData/Roaming/Hyper/.hyper.js";
 fi
 unset color_prompt force_color_prompt
