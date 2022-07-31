@@ -84,16 +84,23 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# Check if we are connected via SSH which means we are on a remote machine
+if [ -z "$SSH_CLIENT" ]; then
+  is_remote=
+else
+  is_remote=" (SSH)"
+fi
+
 # Create symlink for hyperjs config on non-windows systems
 [ "$OSTYPE" != msys ] && [ ! -f "$HOME/.hyper.js" ] && ln -s "$HOME/AppData/Roaming/Hyper/.hyper.js" "$HOME/.hyper.js";
 
 if [ "$color_prompt" = yes ]; then
     # Only overwrite prompt with new one if we are not on msys (Windows / Git Bash) because we already have a fancy prompt there
     if [ "$OSTYPE" != msys ]; then
-        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u\[\033[01;33m\]@\[\033[01;36m\]\h \[\033[01;33m\]\w \[\033[01;35m\]\$ \[\033[00m\]'
+        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u\[\033[01;33m\]@\[\033[01;36m\]\h\[\033[01;32m\]$is_remote \[\033[01;33m\]\w \[\033[01;35m\]\$ \[\033[00m\]'
     fi
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h$is_remote:\w\$ '
 fi
 unset color_prompt force_color_prompt
 
