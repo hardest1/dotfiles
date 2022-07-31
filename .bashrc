@@ -117,9 +117,6 @@ if [ "$OSTYPE" != msys ]; then
       PS1="${debian_chroot:+($debian_chroot)}"
       PS1='\u@\h$is_remote\w \$ '
   fi
-# Stuff to do on windows / git bash
-else
-  #
 fi
 unset color_prompt force_color_prompt
 
