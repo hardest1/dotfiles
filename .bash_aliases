@@ -5,6 +5,11 @@ alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 alias publicip="curl -s http://checkip.dyndns.com/ | sed 's/[^0-9\.]//g'"
 
+# netstat alias
+if [ -x /usr/bin/netstat ]; then
+  alias lntp='netstat -lntp'
+fi
+
 # List all make targets.
 alias make_list="make -qp | sed -n -e 's/^\([^.#[:space:]][^:[:space:]]*\): .*/\1/p'"
 
