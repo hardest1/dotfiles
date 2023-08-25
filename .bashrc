@@ -97,12 +97,17 @@ fi
 # Stuff to do on non-windows systems (set fancy prompt, symlinks)
 if [ "$OSTYPE" != msys ]; then
 
+  # Install Ruby Gems to ~/gems
+  export GEM_HOME="$HOME/gems"
+  export PATH="$HOME/gems/bin:$PATH"
+
   # Create symlinks and directories
   # for ngrok
   [ ! -d "$HOME/.config/ngrok" ] && mkdir -p "$HOME/.config/ngrok";
   [ ! -f "$HOME/.config/ngrok/ngrok.yml" ] && ln -s "$HOME/AppData/Local/ngrok/ngrok.yml" "$HOME/.config/ngrok/ngrok.yml";
   # for hyper terminal
   [ ! -f "$HOME/.hyper.js" ] && ln -s "$HOME/AppData/Roaming/Hyper/.hyper.js" "$HOME/.hyper.js";
+
 
   # Overwrite prompt if we are not on Windows / Git Bash because we already have a fancy prompt there
   if [ "$color_prompt" = yes ]; then
