@@ -27,3 +27,13 @@ extract () {
         echo "${RED}Error: '$1' is not a valid file${NC}"
     fi
 }
+
+# Load NVM
+load_nvm () {
+    echo "load nvm"
+    # NVM - Node Version Manager
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+    echo "load nvm done"
+}

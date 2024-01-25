@@ -16,13 +16,11 @@ SSH_ENV="$HOME/.ssh/environment"
 function run_ssh_env {
   . "${SSH_ENV}" > /dev/null
 }
-
 function start_ssh_agent {
   echo "Initializing new SSH agent..."
   ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
   echo "succeeded"
   chmod 600 "${SSH_ENV}"
-
   run_ssh_env;
 }
 
@@ -38,9 +36,7 @@ fi
 # Add all keys quietly
 ssh-add ~/.ssh/* &> /dev/null
 
-
 # HETZNER .bashrc
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -61,6 +57,7 @@ HISTFILESIZE=999999
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
+
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -93,6 +90,7 @@ is_remote=
 if [ -n "$SSH_CLIENT" ]; then
   is_remote="SSH "
 fi
+#echo "check if remote done"
 
 # Stuff to do on non-windows systems (set fancy prompt, symlinks)
 if [ "$OSTYPE" != msys ]; then
@@ -153,11 +151,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# NVM - Node Version Manager
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # bun.sh
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
+
+
+echo "DONE"
+clear
