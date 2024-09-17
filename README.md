@@ -23,3 +23,8 @@ git config --global url."https://git:$MY_GIT_TOKEN@github.com/".insteadOf "git@g
 git config --global user.name "Alexander Hartmann"
 git config --global user.email "alexander@hartmann-it.de"
 ```
+
+### Optional: Cool packages to install
+
+- fzf https://github.com/junegunn/fzf
+- zoxide https://github.com/ajeetdsouza/zoxide
