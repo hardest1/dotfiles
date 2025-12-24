@@ -2,7 +2,7 @@
 
 # alias for dotfiles bare repo
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias dotfiles-code='GIT_DIR="~/.dotfiles" GIT_WORK_TREE=~ code ~'
+alias dotfiles-code='GIT_DIR="$HOME/.dotfiles" GIT_WORK_TREE=$HOME code $HOME --new-window'
 
 alias publicip="curl -s http://checkip.dyndns.com/ | sed 's/[^0-9\.]//g'"
 

@@ -1,3 +1,6 @@
 {
-  "git.untrackedChanges": "hidden"
+  "git.untrackedChanges": "hidden",
+  "git.scanRepositories": [
+    "./.dotfiles"
+  ]
 } 
