@@ -74,17 +74,7 @@ case "$TERM" in
 esac
 
 force_color_prompt=yes
-
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-        # We have color support; assume it's compliant with Ecma-48
-        # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-        # a case would tend to support setf rather than setaf.)
-        color_prompt=yes
-    else
-        color_prompt=
-    fi
-fi
+color_prompt=yes
 
 # Check if we are connected via SSH which means we are on a remote machine
 is_remote=
@@ -93,37 +83,6 @@ if [ -n "$SSH_CLIENT" ]; then
 fi
 #echo "check if remote done"
 
-# Stuff to do on non-windows systems (set fancy prompt, symlinks)
-if [ "$OSTYPE" != msys ]; then
-
-  # Install Ruby Gems to ~/gems
-  export GEM_HOME="$HOME/gems"
-  export PATH="$HOME/gems/bin:$PATH"
-
-  # Create symlinks and directories
-  # for ngrok
-  [ ! -d "$HOME/.config/ngrok" ] && mkdir -p "$HOME/.config/ngrok";
-  [ ! -f "$HOME/.config/ngrok/ngrok.yml" ] && ln -s "$HOME/AppData/Local/ngrok/ngrok.yml" "$HOME/.config/ngrok/ngrok.yml";
-  # for hyper terminal
-  [ ! -f "$HOME/.hyper.js" ] && ln -s "$HOME/AppData/Roaming/Hyper/.hyper.js" "$HOME/.hyper.js";
-
-
-  # Overwrite prompt if we are not on Windows / Git Bash because we already have a fancy prompt there
-  if [ "$color_prompt" = yes ]; then
-      PS1="${debian_chroot:+($debian_chroot)}"
-      PS1="$PS1\[\033[01;32m\]$is_remote"
-      PS1="$PS1\[\033[01;31m\]\u"
-      PS1="$PS1\[\033[01;33m\]@"
-      PS1="$PS1\[\033[01;36m\]\h "
-      PS1="$PS1\[\033[01;33m\]\w "
-      PS1="$PS1\[\033[01;35m\]\$ "
-      PS1="$PS1\[\033[00m\]"
-  else
-      PS1="${debian_chroot:+($debian_chroot)}"
-      PS1='\u@\h$is_remote\w \$ '
-  fi
-fi
-unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
