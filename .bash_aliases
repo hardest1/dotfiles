@@ -6,8 +6,6 @@ alias dotfiles-code='GIT_DIR="$HOME/.dotfiles" GIT_WORK_TREE=$HOME code $HOME --
 
 alias publicip="curl -s http://checkip.dyndns.com/ | sed 's/[^0-9\.]//g'"
 
-alias kubectl="kubectl --kubeconfig=$HOME/.kube/kubeconfig.yaml"
-
 # netstat alias
 if [ -x /usr/bin/netstat ]; then
   alias lntp='netstat -lntp'
