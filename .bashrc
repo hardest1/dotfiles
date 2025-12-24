@@ -1,3 +1,5 @@
+PROMPT_COMMAND='history -a'
+
 # Display current command at the top of terminal window or tab
 trap 'echo -ne "\033]2;$(history 1 | sed "s/^[0-9 ]* \+//")\007"' DEBUG
 
@@ -11,30 +13,30 @@ export PATH="$HOME/.local/bin:$PATH"
 # Start SSH Agent
 #----------------------------
 
-SSH_ENV="$HOME/.ssh/environment"
+# SSH_ENV="$HOME/.ssh/environment"
 
-function run_ssh_env {
-  . "${SSH_ENV}" > /dev/null
-}
-function start_ssh_agent {
-  echo "Initializing new SSH agent..."
-  ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
-  echo "succeeded"
-  chmod 600 "${SSH_ENV}"
-  run_ssh_env;
-}
+# function run_ssh_env {
+#   . "${SSH_ENV}" > /dev/null
+# }
+# function start_ssh_agent {
+#   echo "Initializing new SSH agent..."
+#   ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+#   echo "succeeded"
+#   chmod 600 "${SSH_ENV}"
+#   run_ssh_env;
+# }
 
-if [ -f "${SSH_ENV}" ]; then
-  run_ssh_env;
-  ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-    start_ssh_agent;
-  }
-else
-  start_ssh_agent;
-fi
+# if [ -f "${SSH_ENV}" ]; then
+#   run_ssh_env;
+#   ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+#     start_ssh_agent;
+#   }
+# else
+#   start_ssh_agent;
+# fi
 
-# Add all keys quietly
-ssh-add ~/.ssh/* &> /dev/null
+# # Add all keys quietly
+# ssh-add ~/.ssh/* &> /dev/null
 
 # HETZNER .bashrc
 # If not running interactively, don't do anything
@@ -46,7 +48,6 @@ esac
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
-
 # append to the history file, don't overwrite it
 shopt -s histappend
 
@@ -150,10 +151,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-# bun.sh
-export BUN_INSTALL="$HOME/.bun"
-export PATH=$BUN_INSTALL/bin:$PATH
 
 
 echo "DONE"
