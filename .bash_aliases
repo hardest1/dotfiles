@@ -43,6 +43,3 @@ alias l='ls -CF'
 alias ddd='du -h -d1'
 alias du='du -h'
 alias df='df -h'
-
-# asciicast2gif
-alias asciicast2gif='docker run --rm -v $PWD:/data asciinema/asciicast2gif'
