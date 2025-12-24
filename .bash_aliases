@@ -2,8 +2,11 @@
 
 # alias for dotfiles bare repo
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dotfiles-code='GIT_DIR="~/.dotfiles" GIT_WORK_TREE=~ code ~'
 
 alias publicip="curl -s http://checkip.dyndns.com/ | sed 's/[^0-9\.]//g'"
+
+alias kubectl="kubectl --kubeconfig=~/.kube/kubeconfig.yaml"
 
 # netstat alias
 if [ -x /usr/bin/netstat ]; then
@@ -40,9 +43,6 @@ alias l='ls -CF'
 alias ddd='du -h -d1'
 alias du='du -h'
 alias df='df -h'
-
-# Blockbook / Chain49 dev
-alias bbb='systemctl list-units | grep -e blockbook -e backend'
 
 # asciicast2gif
 alias asciicast2gif='docker run --rm -v $PWD:/data asciinema/asciicast2gif'

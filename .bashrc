@@ -7,7 +7,10 @@ trap 'echo -ne "\033]2;$(history 1 | sed "s/^[0-9 ]* \+//")\007"' DEBUG
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # add .bin folder to path
+[ ! -d "$HOME/.bin" ] && mkdir -p "$HOME/.bin";
 export PATH="$HOME/.bin:$PATH"
+
+[ ! -d "$HOME/.local/bin" ] && mkdir -p "$HOME/.local/bin";
 export PATH="$HOME/.local/bin:$PATH"
 
 # Start SSH Agent
